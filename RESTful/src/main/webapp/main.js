@@ -1,5 +1,5 @@
 function search(url){	 
-	  $("#title-results").empty();
+	  $("#results").empty();
 	  $.get(url,functionPutBookInTable);
 }
 
