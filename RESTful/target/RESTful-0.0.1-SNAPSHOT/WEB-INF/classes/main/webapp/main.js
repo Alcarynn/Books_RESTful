@@ -4,17 +4,19 @@ function search(url){
 }
 
 function create(URL, input){	 
-	 $.ajax({
-	        type: 'POST',
+	 $.post({
 	        contentType: 'application/json',
 	        url: URL,
-	        dataType: "json",
 	        data: input,
 	        success: function(data, textStatus, jqXHR){
-	            alert('Book created successfully');
+	        	var result = "";
+	        	$.each(data, function(index,value){
+	        		result+= value + " ";
+	        	})
+	            alert('Item ' + result + ' created successfully');
 	        },
 	        error: function(jqXHR, textStatus, errorThrown){
-	            alert('addBook error: ' + textStatus);
+	            alert('Create error: ' + textStatus);
 	        }
 	    });
 }

@@ -14,7 +14,7 @@
 			type="submit" value="OK" />
 	</form>
 
-	<form method="get" action="rest/book/title/" method="get" id="search_title">
+	<form method="get" action="rest/book/title/" id="search_title">
 		Search by title: <input type="text" name="book" id="title_input" /> <input
 			type="submit" value="OK" />
 	</form>
@@ -53,19 +53,31 @@
 					<td><input type="text" name="title" id="title" /></td>
 					<td><input type="number" name="price" id="price" /></td>
 					<td><input type="number" name="nbpage" id="nbpage" /></td>
-					<td><input type="text" name="publisherid" id="publisherid"
+					<td><input class="autocomplete" type="text" name="publisher" id="publisher"
 						placeholder="Search.."></td>
-					<td><input type="text" name="authors" id="authors" /></td>
+					<td><input class="autocomplete" type="text" name="author" id="author" 
+					placeholder="Search.."/></td>
 				</tr>
 			</tbody>
 	</table>
-
 	<input type="submit" value="OK" />
 	</form>
 
-
+	</br> Add a publisher:
+	<form  id="add_publisher" method="post" action="rest/publisher">
+		<input class="name" type="text" id="input_publisher" /> 
+		<input type="submit" value="Add" />
+	</form>
+	
+	
+	</br> Add an author:
+	<form id="add_author" method="post" action="rest/author">
+		<input class="name" type="text" id="input_author" /> 
+		<input type="submit" value="Add" />
+	</form>
+	
 
 <script type="text/javascript" src="main.js"></script>
-	<script type="text/javascript" src="listeners.js" ></script>
+<script type="text/javascript" src="listeners.js" ></script>
 </body>
 </html>

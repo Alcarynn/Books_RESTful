@@ -3,6 +3,9 @@ C:\Users\jhj\git\repository3\RESTful\src\com\vita\khokhlova\EntityManagerFactory
 C:\Users\jhj\git\repository3\RESTful\src\com\vita\khokhlova\entities\Publisher.java
 C:\Users\jhj\git\repository3\RESTful\src\com\vita\khokhlova\repositories\AuthorRepository.java
 C:\Users\jhj\git\repository3\RESTful\src\com\vita\khokhlova\services\HelloWorldRest.java
+C:\Users\jhj\git\repository3\RESTful\src\com\vita\khokhlova\services\PublisherCRUD.java
 C:\Users\jhj\git\repository3\RESTful\src\com\vita\khokhlova\repositories\BookRepository.java
+C:\Users\jhj\git\repository3\RESTful\src\com\vita\khokhlova\services\BookCRUD.java
 C:\Users\jhj\git\repository3\RESTful\src\com\vita\khokhlova\repositories\PublisherRepository.java
+C:\Users\jhj\git\repository3\RESTful\src\com\vita\khokhlova\services\AuthorCRUD.java
 C:\Users\jhj\git\repository3\RESTful\src\com\vita\khokhlova\entities\Author.java
