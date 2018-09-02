@@ -4,7 +4,10 @@ function search(url){
 }
 
 function create(url, data){	 
-	  $.post(url,data);
+	  $.post(url,data,function(result){
+		  console.log(data);
+	        console.log(result);
+	    });
 }
 
 function functionPutBookInTable(response) {

@@ -3,12 +3,20 @@ $('form').submit(function(event){
 	 var action =  $(this).attr('action');
 	 var method = $(this).attr('method');
 	 var input = $(this).children('input').val();
+	 var dataArray = $(this).serializeArray();
+	 
+	 var dataJSON = {};
+	    
+	 $.each(dataArray, function() {
+		 dataJSON[this.name] = this.value || '';
+	    });
+	 
 	 if(method=="get"){
 		 var url =  action + input;
 		 search(url);
 	 }
 	 if(method=="post"){
-		 create(action,);
+		 create(action,dataJSON);
 	 }
 	 
 });
