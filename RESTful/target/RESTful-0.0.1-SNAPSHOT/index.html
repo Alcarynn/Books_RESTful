@@ -1,62 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script
-            src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script type="text/javascript" src="main.js"></script>
 	<script type="text/javascript" src="listeners.js" defer></script>
-    <meta charset="UTF-8">
-    <title>Find book</title>
+	<meta charset="UTF-8">
+	<title>Find book</title>
 </head>
 <body>
 
-<form id="search_id" action="rest/book/">
-    Search by id:
-    <input type="number" name="book" id="id_input"/>
-    <input type="submit" value="OK"/>
-</form>
+	<form method="get" id="search_id" action="rest/book/">
+		Search by id: <input type="number" name="book" id="id_input" /> <input
+			type="submit" value="OK" />
+	</form>
 
-<form action="rest/book/title/" method="get" id="search_title">
-    Search by title:
-    <input type="text" name="book" id="title_input"/>
-    <input type="submit" value="OK"/>
-</form>
+	<form method="get" action="rest/book/title/" method="get" id="search_title">
+		Search by title: <input type="text" name="book" id="title_input" /> <input
+			type="submit" value="OK" />
+	</form>
 
-<table border="1">
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>Title</th>
-        <th>Price</th>
-        <th>Pages</th>
-        <th>Publisher</th>
-        <th>Authors</th>
-        <th>Delete</th>
-    </tr>
-    </thead>
-        <tbody id="title-results">
-    </tbody>
-</table>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Title</th>
+				<th>Price</th>
+				<th>Pages</th>
+				<th>Publisher</th>
+				<th>Authors</th>
+				<th>Delete</th>
+			</tr>
+		</thead>
+		<tbody id="title-results">
+		</tbody>
+	</table>
+	</br> Add a book:
+	</br>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>Title</th>
+				<th>Price</th>
+				<th>Pages</th>
+				<th>Publisher</th>
+				<th>Authors</th>
+			</tr>
+		</thead>
+		<form action="book" method="post">
+			<tbody>
+				<tr>
 
-<form>
-	Add a book:</br>
-	Title:
-	 <input type="text" name="title" id="title"/>
-	 Price:
-	  <input type="number" name="price" id="price"/>
-	  Number of pages:
-	  <input type="number" name="nbpage" id="nbpage"/>
-	  Publisher:
-	  
-    <input type="submit" value="OK"/>
-</form>
+					<td><input type="text" name="title" id="title" /></td>
+					<td><input type="number" name="price" id="price" /></td>
+					<td><input type="number" name="nbpage" id="nbpage" /></td>
+					<td><input type="text" name="publisher" id="publisher"
+						placeholder="Search.."></td>
+					<td><input type="text" name="authors" id="authors" /></td>
+				</tr>
+			</tbody>
+	</table>
 
-Add a publisher:
-<form id="add_publisher">
-<input type="text" id="input_publisher"/>
-<input type="submit" value="Add"/>
-</form>
+	<input type="submit" value="OK" />
+	</form>
+
+	</br> Add a publisher:
+	<form id="add_publisher">
+		<input type="text" id="input_publisher" /> <input type="submit"
+			value="Add" />
+	</form>
 
 
 </body>

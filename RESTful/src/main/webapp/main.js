@@ -1,11 +1,13 @@
-function search(event){
-	  event.preventDefault();
+function search(url){	 
 	  $("#title-results").empty();
-	  var url =  $(this).attr('action') + $(this).children('input').val();
-	  $.get(url,functionResponsePutInTable);
+	  $.get(url,functionPutBookInTable);
 }
 
-function functionResponsePutInTable(response) {
+function create(url, data){	 
+	  $.post(url,data);
+}
+
+function functionPutBookInTable(response) {
     var string = '';
     $.each(response, function( index, value ) {
       string += '<tr><td>' + value.id
