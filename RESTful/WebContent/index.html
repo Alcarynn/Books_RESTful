@@ -4,24 +4,22 @@
     <script
             src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	
+	<script type="text/javascript" src="main.js"></script>
+	<script type="text/javascript" src="listeners.js" defer></script>
     <meta charset="UTF-8">
     <title>Find book</title>
 </head>
 <body>
 
-<form id="search_id">
-    Id:
-    <input type="number" name="fId" id="id_input"/>
+<form id="search_id" action="rest/book/">
+    Search by id:
+    <input type="number" name="book" id="id_input"/>
     <input type="submit" value="OK"/>
 </form>
 
-
-<div id="server-results" style="width: 500px; padding: 10px; background-color: #E1E1E1"></div>
-
-<form action="rest/book/title" method="get" id="search_title">
+<form action="rest/book/title/" method="get" id="search_title">
     Search by title:
-    <input type="text" name="fTitle" id="title_input"/>
+    <input type="text" name="book" id="title_input"/>
     <input type="submit" value="OK"/>
 </form>
 
@@ -34,14 +32,55 @@
         <th>Pages</th>
         <th>Publisher</th>
         <th>Authors</th>
-        <th>&nbsp;</th>
+        <th>Delete</th>
     </tr>
     </thead>
         <tbody id="title-results">
     </tbody>
 </table>
+</br>
+Add a book:</br>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Price</th>
+        <th>Pages</th>
+        <th>Publisher</th>
+        <th>Authors</th>
+    </tr>
+    </thead>
+    <form>
+        <tbody>
+        <tr>
+	
+<td>
+	 <input type="text" name="title" id="title"/>
+</td><td>
+	  <input type="number" name="price" id="price"/>
+</td><td>
+	  <input type="number" name="nbpage" id="nbpage"/>
+	  </td><td>
+	   <input type="text" name="publisher" id="publisher"/>
+	   </td><td>
+	    <input type="text" name="authors" id="authors"/>
+	    </td>
+    </tr>
+    </tbody>
+</table>
+	  
+    <input type="submit" value="OK"/>
+</form>
+	
 
-<script type="text/javascript" src="main.js"></script>
+</br>	
+
+Add a publisher:
+<form id="add_publisher">
+<input type="text" id="input_publisher"/>
+<input type="submit" value="Add"/>
+</form>
+
 
 </body>
 </html>

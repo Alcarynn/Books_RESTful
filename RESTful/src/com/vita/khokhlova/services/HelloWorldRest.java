@@ -1,5 +1,6 @@
 package com.vita.khokhlova.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.*;
@@ -41,8 +42,10 @@ public class HelloWorldRest {
     @GET
     @Path("book/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Book getBookById(@PathParam("id") int id){
-        return bookRepository.getById(id);
+    public List<Book> getBookById(@PathParam("id") int id){
+    	List<Book> bookList = new ArrayList<Book>();
+    	bookList.add(bookRepository.getById(id));
+        return bookList;
     }
 
     @GET
@@ -51,6 +54,8 @@ public class HelloWorldRest {
     public List<Book> getBookByTitle(@PathParam("title") String title){
         return bookRepository.getByTitle(title);
     }
+    
+    
 
 
     @GET

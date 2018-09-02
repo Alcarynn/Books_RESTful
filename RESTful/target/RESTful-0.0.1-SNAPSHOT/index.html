@@ -2,28 +2,24 @@
 <html lang="en">
 <head>
     <script
-            src="https://code.jquery.com/jquery-3.3.1.min.js"
-            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-            crossorigin="anonymous"></script>
+            src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
+	<script type="text/javascript" src="main.js"></script>
+	<script type="text/javascript" src="listeners.js" defer></script>
     <meta charset="UTF-8">
     <title>Find book</title>
 </head>
 <body>
 
-<form id="search_id">
-    Id:
-    <input type="number" name="fId"/>
+<form id="search_id" action="rest/book/">
+    Search by id:
+    <input type="number" name="book" id="id_input"/>
     <input type="submit" value="OK"/>
 </form>
 
-
-<div id="server-results" style="width: 500px; padding: 10px; background-color: #E1E1E1"></div>
-
-<form action="/StartJava/rest/book/title" method="get" id="search_title">
+<form action="rest/book/title/" method="get" id="search_title">
     Search by title:
-    <input type="text" name="fTitle"/>
+    <input type="text" name="book" id="title_input"/>
     <input type="submit" value="OK"/>
 </form>
 
@@ -36,59 +32,32 @@
         <th>Pages</th>
         <th>Publisher</th>
         <th>Authors</th>
-        <th>&nbsp;</th>
+        <th>Delete</th>
     </tr>
     </thead>
         <tbody id="title-results">
     </tbody>
 </table>
 
-<script>
-    $('#search_id').submit(function(event){
-  event.preventDefault();
-  var url = "/StartJava/rest/book/" + $("#search_id").val();
-  $("#server-results").empty();
-  $.getJSON(url, function(response) {
-      $.each(response, function(key, val) {
-            $("#server-results").append( key + ": " + val + "<br />");
-        });
-    });
-});
-$('#search_title').submit(function(event){
-  event.preventDefault();
-  $("#title-results").empty();
-  $.get($(this).attr("action"), $(this).serialize(), function(response) {
-      var string = '';
-      $.each(response, function( index, value ) {
-        string += '<tr><td>' + value.id
-        + '</td><td>' + value.title
-        + '</td><td>' + value.price
-        + '</td><td>' +value.nbpage + '</td><td>';
-        if(value.publisher != undefined){
-            string +=  value.publisher.name;
-        }
-        string +=  '</td><td>'
-        if(value.authors != undefined){
-            var virgule = '';
-            $.each(value.authors, function( index, valueauthors ) {
-                string +=  virgule + valueauthors.name;
-                virgule = ', ';
-                })
-        }
-        string += '</td><td>'
-        string += '<button type="button" onclick="myFunction(' + value.id + ')">X</button>'
-        string += '</td></tr>';
-      });
-      $("#title-results").append(string);
-  });
-});
-function myFunction (id) {
-    $.ajax({
-                url: 'rest/book/' + id,
-                type: 'DELETE'
-        });
-    };
-</script>
+<form>
+	Add a book:</br>
+	Title:
+	 <input type="text" name="title" id="title"/>
+	 Price:
+	  <input type="number" name="price" id="price"/>
+	  Number of pages:
+	  <input type="number" name="nbpage" id="nbpage"/>
+	  Publisher:
+	  
+    <input type="submit" value="OK"/>
+</form>
+
+Add a publisher:
+<form id="add_publisher">
+<input type="text" id="input_publisher"/>
+<input type="submit" value="Add"/>
+</form>
+
 
 </body>
 </html>
