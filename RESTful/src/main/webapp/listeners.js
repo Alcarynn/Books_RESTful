@@ -9,32 +9,32 @@ $('form').submit(function(event){
 		 search(url);
 	 }
 	 if(method=="post"){
-		 $.ajax({
-		        type: 'POST',
-		        contentType: 'application/json',
-		        url: action,
-		        dataType: "json",
-		        data: formToJSON(),
-		        success: function(data, textStatus, jqXHR){
-		            alert('Book created successfully');
-		        },
-		        error: function(jqXHR, textStatus, errorThrown){
-		            alert('addBook error: ' + textStatus);
-		        }
-		    });
+		 create(action,  formToJSON());
 	 }
 	 
 });
-$(function() {
-$('#publisher').autocomplete({
-	source: publishers
-	});});
+var publishers=[];
 $(document).ready(function() {
 	$.getJSON('rest/publisher',function(jsonArray){
 		  $.each(jsonArray, function(i,json) {
 			  publishers.push({label:json.name, value:json.id});
 		  });
-	});         
+	});  
+$(function() {
+$('#publisherid').autocomplete({
+	source: publishers
+	});});
+
+       
 });
 
-var publishers=[];
+function formToJSON() {
+    return JSON.stringify({
+        "title": $('#title').val(),
+        "price": $('#price').val(),
+        "nbpage": $('#nbpage').val(),
+        "publisher":{"id":$('#publisherid').val()},
+        "authors":[{"id":$('#authors').val()}]
+        });
+}
+

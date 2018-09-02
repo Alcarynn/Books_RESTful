@@ -3,10 +3,19 @@ function search(url){
 	  $.get(url,functionPutBookInTable);
 }
 
-function create(url, data){	 
-	  $.post(url,data,function(result){
-		  console.log(data);
-	        console.log(result);
+function create(URL, input){	 
+	 $.ajax({
+	        type: 'POST',
+	        contentType: 'application/json',
+	        url: URL,
+	        dataType: "json",
+	        data: input,
+	        success: function(data, textStatus, jqXHR){
+	            alert('Book created successfully');
+	        },
+	        error: function(jqXHR, textStatus, errorThrown){
+	            alert('addBook error: ' + textStatus);
+	        }
 	    });
 }
 
@@ -41,4 +50,5 @@ function deleteBook (id) {
                 type: 'DELETE'
         });
 };
+
 
