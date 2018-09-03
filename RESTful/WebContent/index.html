@@ -3,7 +3,6 @@
 <head>
 	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	
 	<meta charset="UTF-8">
 	<title>Find book</title>
 </head>
@@ -34,11 +33,12 @@
 		<tbody id="results">
 		</tbody>
 	</table>
-	</br> Add a book:
+	</br> Add or update a book:
 	</br>
 	<table border="1">
 		<thead>
 			<tr>
+				<th>Id</th>
 				<th>Title</th>
 				<th>Price</th>
 				<th>Pages</th>
@@ -49,7 +49,7 @@
 		<form action="rest/book" method="post">
 			<tbody>
 				<tr>
-
+					<td><input type="number" name="id" id="id" /></td>
 					<td><input type="text" name="title" id="title" /></td>
 					<td><input type="number" name="price" id="price" /></td>
 					<td><input type="number" name="nbpage" id="nbpage" /></td>

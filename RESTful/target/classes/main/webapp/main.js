@@ -20,6 +20,24 @@ function create(URL, input){
 	        }
 	    });
 }
+function update(URL, input){	 
+	 $.ajax({
+		 	type: 'put',
+	        contentType: 'application/json',
+	        url: URL,
+	        data: input,
+	        success: function(data, textStatus, jqXHR){
+	        	var result = "";
+	        	$.each(data, function(index,value){
+	        		result+= value + " ";
+	        	})
+	            alert('Item ' + result + ' updated successfully');
+	        },
+	        error: function(jqXHR, textStatus, errorThrown){
+	            alert('Update error: ' + textStatus);
+	        }
+	    });
+}
 
 function functionPutBookInTable(response) {
     var string = '';
@@ -43,7 +61,7 @@ function functionPutBookInTable(response) {
       string += '<button type="button" onclick="deleteBook(' + value.id + ')">X</button>'
       string += '</td></tr>';
     });
-    $("#title-results").append(string);
+    $("#results").append(string);
 }
 
 function deleteBook (id) {

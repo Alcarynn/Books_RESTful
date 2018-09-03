@@ -50,7 +50,7 @@ function bookToJSON() {
 			"id" : $('#publisher').val()
 		},
 		"authors" : [ {
-			"id" : $('#authors').val()
+			"id" : $('#author').val()
 		} ]
 	});
 }
