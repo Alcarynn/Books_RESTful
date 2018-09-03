@@ -2,7 +2,7 @@ $('form').submit(function(event) {
 	event.preventDefault();
 	var action = $(this).attr('action');
 	var method = $(this).attr('method');
-	
+	var input = $(this).children('input').val();
 	if ($(this).children('input').attr('class') == "name") {
 		var data = JSON.stringify({
 			"name" : input
@@ -12,16 +12,16 @@ $('form').submit(function(event) {
 	}
 
 	if (method == "get") {
-		var input = $(this).children('input').val();
+		
 		var url = action + input;
 		search(url);
 	}
 	if (method == "post") {
-		if($('#id').val()==""){
-			create(action, data);
+		if($('#id').val()!=""){
+			update(action, data);
 		}
 		else{
-			update(action, data);
+			create(action, data);
 		}
 		
 	}
@@ -30,7 +30,10 @@ $('document').ready(function(){
 	
 })
 $('input.autocomplete').keyup(function() {
-var list = [];
+	var list = [];
+	var name = $(this).attr('name');
+	var url = 'rest/' + name;
+	var id = '#' + name;
 	
 	$.getJSON(url, function(jsonArray) {
 		$.each(jsonArray, function(i, json) {
@@ -40,10 +43,8 @@ var list = [];
 			});
 		});
 	});
-	var name = $(this).attr('name');
-	var url = 'rest/' + name;
-	var id = '#' + name;
-		$(id).autocomplete({
+	
+	$(id).autocomplete({
 			source : list,
 			minLength : 1,
 			maxShowItems: 5
@@ -52,15 +53,17 @@ var list = [];
 
 function bookToJSON() {
 	return JSON.stringify({
-		"id" : $('#id').val(),
+		"id" : parseInt($('#id').val()),
 		"title" : $('#title').val(),
-		"price" : $('#price').val(),
-		"nbpage" : $('#nbpage').val(),
+		"price" : parseFloat($('#price').val()),
+		"nbpage" : parseInt($('#nbpage').val()),
 		"publisher" : {
-			"id" : $('#publisher').val()
+			"id" : parseInt($('#publisher').val())
 		},
 		"authors" : [ {
-			"id" : $('#author').val()
+			"id" : parseInt($('#author').val())
 		} ]
 	});
 }
+
+
