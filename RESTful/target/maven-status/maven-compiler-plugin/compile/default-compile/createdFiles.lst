@@ -1,0 +1,11 @@
+com\vita\khokhlova\services\HelloWorldRest.class
+com\vita\khokhlova\services\PublisherCRUD.class
+com\vita\khokhlova\repositories\PublisherRepository.class
+com\vita\khokhlova\entities\Author.class
+com\vita\khokhlova\services\BookCRUD.class
+com\vita\khokhlova\entities\Publisher.class
+com\vita\khokhlova\entities\Book.class
+com\vita\khokhlova\repositories\BookRepository.class
+com\vita\khokhlova\services\AuthorCRUD.class
+com\vita\khokhlova\EntityManagerFactorySingleton.class
+com\vita\khokhlova\repositories\AuthorRepository.class
